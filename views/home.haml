@@ -1,0 +1,8 @@
+%h1 Convert
+%form{:action => "/convert", :method => "post"}
+  %textarea{:name => "transactions"}= flash[:raw]
+  %div.submit
+    %input{:type => "submit", :name => "convert", :value => "preview"}/
+    %input{:type => "submit", :name => "convert", :value => "convert"}/
+- unless (preview = flash[:preview]).nil?
+  %pre= preview
