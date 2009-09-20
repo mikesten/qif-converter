@@ -1,14 +1,17 @@
 %h1 Convert
 %form{:action => "/convert", :method => "post"}
-  %textarea{:name => "transactions"}= flash[:raw]
+  %label{:for => "transactions"} Copy and paste transactions from your online statement
+  %textarea{:name => "transactions", :id => "transactions"}= flash[:raw]
   %div
-    %select{:name => "date_format"}
-      %option{opt("%d/%m/%Y", flash[:date_format])} 20/12/2009
-      %option{opt("%d %b %Y", flash[:date_format])} 20 Dec 2009
-  %div
-    %select{:name => "table_format"}
+    %label{:for => "table_format"} Transaction format
+    %select{:name => "table_format", :id => "table_format"}
       %option{opt("ddtoi", flash[:table_format])} Date Description Type Out In
       %option{opt("ddoi", flash[:table_format])} Date Description Out In
+  %div
+    %label{:for => "date_format"} Date format
+    %select{:name => "date_format", :id => "date_format"}
+      %option{opt("%d/%m/%Y", flash[:date_format])} 20/12/2009
+      %option{opt("%d %b %Y", flash[:date_format])} 20 Dec 2009
   %div.submit
     %input{:type => "submit", :name => "convert", :value => "preview"}/
     %input{:type => "submit", :name => "convert", :value => "convert"}/
