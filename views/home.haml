@@ -3,12 +3,12 @@
   %textarea{:name => "transactions"}= flash[:raw]
   %div
     %select{:name => "date_format"}
-      %option{:value => "%d/%m/%Y"} 20/12/2009
-      %option{:value => "%d %b %Y"} 20 Dec 2009
+      %option{opt("%d/%m/%Y", flash[:date_format])} 20/12/2009
+      %option{opt("%d %b %Y", flash[:date_format])} 20 Dec 2009
   %div
     %select{:name => "table_format"}
-      %option{:value => "ddtoi"} Date Description Type Out In
-      %option{:value => "ddio"} Date Description Out In
+      %option{opt("ddtoi", flash[:table_format])} Date Description Type Out In
+      %option{opt("ddoi", flash[:table_format])} Date Description Out In
   %div.submit
     %input{:type => "submit", :name => "convert", :value => "preview"}/
     %input{:type => "submit", :name => "convert", :value => "convert"}/
