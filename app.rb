@@ -17,9 +17,6 @@ class Converter < Sinatra::Base
     def opt(name, param)
       {:value => name, :selected => (param == name ? "selected" : nil)}
     end
-    # def select(name, val)
-    #   name == val ? "selected", nil
-    # end
   end
   
   get '/screen.css' do
@@ -41,18 +38,25 @@ class Converter < Sinatra::Base
     when "ddtoi" then {:date => 0, :description => 1, :out => 3, :in => 4}
     else {:date => 0, :description => 1, :out => 2, :in => 3}
     end
-    raw.split(/\n/).each do |line|
-      parts = extract_parts(line, key)
-      output << "D#{parts[:date]}\n"
-      output << "P#{parts[:description]}\n"
-      output << "T#{parts[:value]}\n"
-      output << "^\n"
+    
+    flash[:raw] = raw
+    flash[:table_format] = params[:table_format]
+    flash[:date_format] = params[:date_format]
+    
+    begin
+      raw.split(/\n/).each do |line|
+        parts = extract_parts(line, key)
+        output << "D#{parts[:date]}\n"
+        output << "P#{parts[:description]}\n"
+        output << "T#{parts[:value]}\n"
+        output << "^\n"
+      end
+    rescue ArgumentError => e
+      flash[:error] = "Can't convert that - sorry. Have you selected the right transaction and date formats?"
+      redirect "/"
     end
     if params[:convert] == "preview"
       flash[:preview] = output
-      flash[:raw] = raw
-      flash[:table_format] = params[:table_format]
-      flash[:date_format] = params[:date_format]
       redirect "/#preview"
     end
     output

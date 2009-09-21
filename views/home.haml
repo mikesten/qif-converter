@@ -6,6 +6,9 @@
 %p.help
   %a{:href => "#help"} Need instructions?
 %form{:action => "/convert", :method => "post"}
+  - error = flash[:error]
+  - if error
+    %p.error= error
   %div.controls
     %div
       %label{:for => "table_format"} Transaction format

@@ -58,8 +58,15 @@ p.intro {
     a,
     a:link,
     a:visited {
-        color: @light;
+        color: @medium;
     }
+}
+p.error {
+    margin: 0 0 1em 0;
+    padding: 0.5em 3%;
+    
+    color: white;
+    background: #e54100;
 }
 h2 {
     margin: 0 0 1em 0;
@@ -196,13 +203,15 @@ p.help a {
 }
 
 div#preview {
+    margin: -3em 0 0 0;
     padding: 0 15% 3em 15%;
     
     text-align: left;
 
 }
 div#preview pre {
-    padding: 1.5em 10px;
+    width: 94%;
+    padding: 1.5em 3%;
     
     color: white;
     background: @dark;
