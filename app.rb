@@ -53,7 +53,7 @@ class Converter < Sinatra::Base
       flash[:raw] = raw
       flash[:table_format] = params[:table_format]
       flash[:date_format] = params[:date_format]
-      redirect "/"
+      redirect "/#preview"
     end
     output
   end

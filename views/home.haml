@@ -1,16 +1,18 @@
 %h1 QIF Converter
+%p.help
+  %a{:href => "#help"} Need instructions?
 %form{:action => "/convert", :method => "post"}
   %div.controls
     %div
       %label{:for => "table_format"} Transaction format
       %select{:name => "table_format", :id => "table_format"}
-        %option{opt("ddtoi", flash[:table_format])} Date Description Type Out In
         %option{opt("ddoi", flash[:table_format])} Date Description Out In
+        %option{opt("ddtoi", flash[:table_format])} Date Description Type Out In
     %div
       %label{:for => "date_format"} Date format
       %select{:name => "date_format", :id => "date_format"}
-        %option{opt("%d/%m/%Y", flash[:date_format])} 20/12/2009
         %option{opt("%d %b %Y", flash[:date_format])} 20 Dec 2009
+        %option{opt("%d/%m/%Y", flash[:date_format])} 20/12/2009
   %div.transactions
     %label{:for => "transactions"} Copy and paste transactions from your online statement
     %textarea{:name => "transactions", :id => "transactions"}= flash[:raw]
@@ -18,4 +20,18 @@
     %input{:type => "submit", :name => "convert", :value => "preview", :class => "preview button"}/
     %input{:type => "submit", :name => "convert", :value => "convert", :class => "convert button"}/
 - unless (preview = flash[:preview]).nil?
-  %pre= preview
+  %div#preview
+    %pre= preview
+
+%div#help
+  %h2 Instructions
+  %ol
+    %li Log in to your online banking as usual.
+    %li Select the transactions you want to convert (don't include the headers).
+    %li Copy.
+    %li Paste into the textarea above.
+    %li Select the format of the statement and date.
+    %li Hit preview to see how it's going to come out.
+    %li In the preview you should see American style dates (24/12/09, for example) and negative numbers for withdrawls.
+    %li If everything looks okay hit convert.
+  
