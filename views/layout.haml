@@ -1,0 +1,16 @@
+!!!
+%html{ :xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en" }
+  %head
+    %title QIF Converter
+    %meta{"http-equiv" => "content-type", :content => "text/html; charset=utf-8"}/
+    %link{:href => '/screen.css', :media => 'screen', :rel => 'stylesheet', :type => 'text/css'}/
+  %body
+    %div#page
+      %div#header
+      %div#content
+        = yield
+      %div#footer
+        %p
+          = succeed "." do
+            A itch scratching project by
+            %a{:href => "http://donotremove.co.uk"} Mike
