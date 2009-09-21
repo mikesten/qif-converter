@@ -1,19 +1,21 @@
-%h1 Convert
+%h1 QIF Converter
 %form{:action => "/convert", :method => "post"}
-  %label{:for => "transactions"} Copy and paste transactions from your online statement
-  %textarea{:name => "transactions", :id => "transactions"}= flash[:raw]
-  %div
-    %label{:for => "table_format"} Transaction format
-    %select{:name => "table_format", :id => "table_format"}
-      %option{opt("ddtoi", flash[:table_format])} Date Description Type Out In
-      %option{opt("ddoi", flash[:table_format])} Date Description Out In
-  %div
-    %label{:for => "date_format"} Date format
-    %select{:name => "date_format", :id => "date_format"}
-      %option{opt("%d/%m/%Y", flash[:date_format])} 20/12/2009
-      %option{opt("%d %b %Y", flash[:date_format])} 20 Dec 2009
+  %div.controls
+    %div
+      %label{:for => "table_format"} Transaction format
+      %select{:name => "table_format", :id => "table_format"}
+        %option{opt("ddtoi", flash[:table_format])} Date Description Type Out In
+        %option{opt("ddoi", flash[:table_format])} Date Description Out In
+    %div
+      %label{:for => "date_format"} Date format
+      %select{:name => "date_format", :id => "date_format"}
+        %option{opt("%d/%m/%Y", flash[:date_format])} 20/12/2009
+        %option{opt("%d %b %Y", flash[:date_format])} 20 Dec 2009
+  %div.transactions
+    %label{:for => "transactions"} Copy and paste transactions from your online statement
+    %textarea{:name => "transactions", :id => "transactions"}= flash[:raw]
   %div.submit
-    %input{:type => "submit", :name => "convert", :value => "preview"}/
-    %input{:type => "submit", :name => "convert", :value => "convert"}/
+    %input{:type => "submit", :name => "convert", :value => "preview", :class => "preview button"}/
+    %input{:type => "submit", :name => "convert", :value => "convert", :class => "convert button"}/
 - unless (preview = flash[:preview]).nil?
   %pre= preview
