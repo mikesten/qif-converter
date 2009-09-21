@@ -46,6 +46,21 @@ h1 {
     color: white;
     background: @dark;
 }
+p.intro {
+    margin: -1.5em 0 1.5em 0;
+    padding: 0 15%;
+    
+    font-size: 0.96em;
+    text-align: center;
+    
+    color: @medium;
+    
+    a,
+    a:link,
+    a:visited {
+        color: @light;
+    }
+}
 h2 {
     margin: 0 0 1em 0;
     font-size: 1.5em;
@@ -57,7 +72,6 @@ ol {
         list-style: decimal outside;
     }
 }
-
 form {
     padding: 3em 15%;
     
@@ -175,6 +189,10 @@ p.help a {
     -moz-border-top-right-radius: 0;
     -webkit-border-top-right-radius: 0;
     border-top-right-radius: 0;
+    
+    :hover {
+        text-decoration: underline;
+    }
 }
 
 div#preview {
@@ -197,6 +215,7 @@ div#help {
 }
 
 div#footer {
+    margin: 0 0 1.5em 0;
     padding: 0 15% 0 15%;
     
     text-align: center;
