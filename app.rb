@@ -36,6 +36,7 @@ class Converter < Sinatra::Base
     raw = params[:transactions]
     key = case params[:table_format]
     when "ddtoi" then {:date => 0, :description => 1, :out => 3, :in => 4}
+    when "dddv" then {:date => 1, :description => 2, :value => 3}
     else {:date => 0, :description => 1, :out => 2, :in => 3}
     end
     
@@ -68,12 +69,20 @@ class Converter < Sinatra::Base
     d = Date.strptime(parts[key[:date]], params[:date_format])
     results[:date] = d.strftime("%m/%d/%Y")
     results[:description] = parts[key[:description]].strip
-    withdraw = parts[key[:out]].to_f.abs
-    deposit = parts[key[:in]].to_f.abs
-    unless withdraw.zero?
-      results[:value] = 0 - withdraw
-    else
-      results[:value] = deposit
+    if key.has_key?(:in) && key.has_key?(:out)
+      withdraw = parts[key[:out]].to_f.abs
+      deposit = parts[key[:in]].to_f.abs
+      unless withdraw.zero?
+        results[:value] = 0 - withdraw
+      else
+        results[:value] = deposit
+      end
+    elsif key.has_key?(:value)
+      if parts[key[:value]].include?("CR")
+        results[:value] = parts[key[:value]].to_f
+      else
+        results[:value] = 0 - parts[key[:value]].to_f
+      end
     end
     results
   end
