@@ -10,7 +10,6 @@
     %link{:href => '/screen.css', :media => 'screen', :rel => 'stylesheet', :type => 'text/css'}/
   %body
     %div#page
-      %div#header
       %div#content
         = yield
       %div#footer
@@ -19,3 +18,12 @@
             A itch scratching project by
             %a{:href => "http://donotremove.co.uk"} Mike
           Absolutely no data is stored. Ever.
+          
+    %script{:type => "text/javascript"}
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    %script{:type => "text/javascript"}
+      try {
+      var pageTracker = _gat._getTracker("UA-360581-4");
+      pageTracker._trackPageview();
+      } catch(err) {}
