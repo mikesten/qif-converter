@@ -20,6 +20,8 @@
       %select{:name => "date_format", :id => "date_format"}
         %option{opt("%d %b %Y", flash[:date_format])} 20 Dec 2009
         %option{opt("%d/%m/%Y", flash[:date_format])} 20/12/2009
+        %option{opt("%b %d %Y", flash[:date_format])} Dec 20 2009
+        %option{opt("%m/%d/%Y", flash[:date_format])} 12/20/2009
   %div.transactions
     %label{:for => "transactions"} Copy and paste transactions from your online statement
     %textarea{:name => "transactions", :id => "transactions"}= flash[:raw]
