@@ -46,28 +46,6 @@ h1 {
     color: white;
     background: @dark;
 }
-p.intro {
-    margin: -1.5em 0 1.5em 0;
-    padding: 0 15%;
-    
-    font-size: 0.96em;
-    text-align: center;
-    
-    color: @medium;
-    
-    a,
-    a:link,
-    a:visited {
-        color: @medium;
-    }
-}
-p.error {
-    margin: 0 0 1em 0;
-    padding: 0.5em 3%;
-    
-    color: white;
-    background: #e54100;
-}
 h2 {
     margin: 0 0 1em 0;
     font-size: 1.5em;
@@ -79,13 +57,37 @@ ol {
         list-style: decimal outside;
     }
 }
+code {
+    font-family: "Courier New", Courier, monospace;
+}
+table {
+    width: 100%;
+    
+    margin: 1em -10px;
+    
+    border-spacing: 0;
+    border-collapse: collapse;
+    
+    th, td {
+        padding: 0.25em 10px 1em 10px;
+        
+        border-bottom: 1px solid @light;
+    }
+}
 form {
     padding: 3em 15%;
+    
+    p.error {
+        margin: 0 0 1em 0;
+        padding: 0.5em 3%;
+
+        color: white;
+        background: #e54100;
+    }
     
     div.controls {
         float: right;
         width: 21%;
-        
     }
     div.transactions {
         float: left;
@@ -202,25 +204,59 @@ p.help a {
     }
 }
 
+p#intro {
+    margin: -1.5em 0 1.5em 0;
+    padding: 0 15%;
+    
+    font-size: 0.96em;
+    text-align: center;
+    
+    color: @medium;
+    
+    a,
+    a:link,
+    a:visited {
+        color: @medium;
+    }
+}
+
 div#preview {
     margin: -3em 0 0 0;
     padding: 0 15% 3em 15%;
     
     text-align: left;
-
-}
-div#preview pre {
-    width: 94%;
-    padding: 1.5em 3%;
     
-    color: white;
-    background: @dark;
+    pre {
+        display: block;
+        width: 94%;
+        
+        padding: 1.5em 3%;
+
+        color: white;
+        background: @dark;
+    }
 }
 
 div#help {
-    padding: 0 33% 3em 15%;
+    padding: 0 15% 3em 15%;
     
     text-align: left;
+    
+    ol {
+        padding: 0 21% 0 0;
+    }
+}
+
+div#examples {
+    padding: 0 15% 3em 15%;
+    
+    text-align: left;
+    
+    p#really {
+        padding: 0 21% 0 0;
+
+        font-size: 0.96em;
+    }
 }
 
 div#footer {
@@ -228,10 +264,4 @@ div#footer {
     padding: 0 15% 0 15%;
     
     text-align: center;
-}
-pre {
-    display: block;
-    width: 100%;
-    
-    background: #eee;
 }

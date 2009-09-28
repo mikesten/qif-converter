@@ -1,10 +1,13 @@
 %h1 QIF Converter
-%p.intro
+
+%p#intro
   Convert your online bank statements into 
   %a{:href => "http://en.wikipedia.org/wiki/Quicken_Interchange_Format"} QIF 
   files for use in your favourite money application.
+  
 %p.help
   %a{:href => "#help"} Need instructions?
+  
 %form{:action => "/convert", :method => "post"}
   - error = flash[:error]
   - if error
@@ -40,7 +43,11 @@
     %li Select the transactions you want to convert (don't include the headers).
     %li Copy.
     %li Paste into the textarea above.
-    %li Select the format of the statement and date.
+    %li 
+      Select the format of the statement and date. Some statements have an account balance on the end but you don't need to worry about that. 
+      There are 
+      %a{:href => "#examples"} a few examples 
+      below if you need a bit more in the way of explanation.
     %li 
       Hit 
       %strong preview 
@@ -55,4 +62,43 @@
       users in Firefox should see the 
       %strong upload to Wesabe 
       button, as per usual.
-  
+      
+%div#examples
+  %h2 Examples
+  %table
+    %thead
+      %tr
+        %th Bank
+        %th Example statement
+        %th Transaction Format
+        %th Date Format
+    %tbody
+      %tr
+        %td
+          Egg
+        %td
+          %code 14 Jul 2009	Card Deposit	 	100.00	100.00
+        %td
+          Date Description Out In
+        %td
+          20 Dec 2009
+      %tr
+        %td
+          Sainsbury's Bank
+        %td
+          %code 14/07/2009	 Card Deposit	  	  100.00	  100.00
+        %td
+          Date Description Out In
+        %td
+          20/12/2009
+      %tr
+        %td
+          Sainsbury's Bank
+          %a{:href => "#really"} *
+        %td
+          %code 14/07/2009	 NET INTEREST	 INT	  	  100.00	  100.00
+        %td
+          Date Description Type Out In
+        %td
+          20/12/2009
+  %p#really * Not a typo: Sainsbury's Bank really do have two separate formats for their statements depending on what type of account you have!
